@@ -115,7 +115,10 @@ forEach((button) => {
         quantity:1
       })
     }
-
+    let quantity=0;
+    cart.forEach((item) => {
+      quantity += item.quantity;
+    })
    
     console.log(cart);
   })
