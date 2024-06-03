@@ -35,6 +35,9 @@ priceCents: 1090
   priceCents:1899
 }
 ]*/
+
+import {cart} from '../data/cart.js';
+
 let productsHTML = '';
 products.forEach((product) => {
   productsHTML+= ` <div class="product-container">
@@ -135,7 +138,8 @@ forEach((button) => {
       clearTimeout(interval);
       interval=setTimeout(()=>{
         messageField.classList.remove('hello');
-      },2000);}
+      },2000);
+    }
     
   });
 })
