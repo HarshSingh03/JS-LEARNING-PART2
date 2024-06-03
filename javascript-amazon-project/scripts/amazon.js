@@ -118,8 +118,8 @@ forEach((button) => {
     let quantity=0;
     cart.forEach((item) => {
       quantity += item.quantity;
-    })
-   
-    console.log(cart);
+    });
+    document.querySelector('.js-cart-quantity').innerHTML=quantity;
+    
   })
 })
