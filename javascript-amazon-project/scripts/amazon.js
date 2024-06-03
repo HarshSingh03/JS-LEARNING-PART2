@@ -35,6 +35,10 @@ priceCents: 1090
   priceCents:1899
 }
 ]*/
+
+import {cart} from '../data/cart.js';
+import {products} from '../data/products.js';
+
 let productsHTML = '';
 products.forEach((product) => {
   productsHTML+= ` <div class="product-container">
@@ -120,6 +124,7 @@ forEach((button) => {
       quantity += item.quantity;
     });
     document.querySelector('.js-cart-quantity').innerHTML=quantity;
+		console.log(cart);
     
   })
 })
