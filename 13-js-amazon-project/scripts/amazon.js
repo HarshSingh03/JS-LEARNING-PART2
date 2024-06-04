@@ -96,27 +96,27 @@ products.forEach((product) => {
 })
 
 
-let interval,running=false;
-
+let running=false;
 document.querySelectorAll('.js-add-to-cart').
 forEach((button) => {
   button.addEventListener('click',() =>{
     const {productId}=button.dataset;
-    const selectedQuantity = Number( document.querySelector(`.js-quantity-selector-${productId}`).value);
+    let selectedQuantity = Number( document.querySelector(`.js-quantity-selector-${productId}`).value);
+    console.log(selectedQuantity);
     let matchingItem;
+    let interval;
     cart.forEach((item)=>{
       if (productId === item.productId){
         matchingItem = item;
       }
     })
-    
     if (matchingItem){
       matchingItem.quantity += selectedQuantity;
     }
     else{
       cart.push({
         productId,
-        quantity:1
+        quantity:selectedQuantity
       })
     }
     let quantity=0;
@@ -129,18 +129,13 @@ forEach((button) => {
     const messageField=document.querySelector(`.js-added-to-cart-${productId}`);
     messageField.classList.add('hello');
     
-    if (!running){
-      interval=setTimeout(()=>{
-        messageField.classList.remove('hello');
-      },2000);
-      running=true;
-    }
-    else{
-      clearTimeout(interval);
-      interval=setTimeout(()=>{
-        messageField.classList.remove('hello');
-      },2000);
-    }
+    
+    interval=setTimeout(()=>{
+      messageField.classList.remove('hello');
+    },2000);
+    
+    
+    
     
   });
 })
