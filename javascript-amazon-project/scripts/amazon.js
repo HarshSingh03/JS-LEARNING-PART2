@@ -36,7 +36,7 @@ priceCents: 1090
 }
 ]*/
 
-import {cart} from '../data/cart.js';
+import {cart, addToCart} from '../data/cart.js';
 import {products} from '../data/products.js';
 
 let productsHTML = '';
@@ -95,36 +95,23 @@ products.forEach((product) => {
   .innerHTML = productsHTML;
 })
 
+function updateCartQuantity(){
+  let quantity=0;
+  cart.forEach((item) => {
+    quantity += item.quantity;
+  });
+  document.querySelector('.js-cart-quantity').innerHTML=quantity;
+  console.log(cart);
+}
+
 
 
 
 document.querySelectorAll('.js-add-to-cart').
 forEach((button) => {
   button.addEventListener('click',() =>{
-    const productId=button.dataset.productId;
-    
-    let matchingItem;
-    cart.forEach((item)=>{
-      if (productId === item.productId){
-        matchingItem = item;
-      }
-    })
-    
-    if (matchingItem){
-      matchingItem.quantity += 1;
-    }
-    else{
-      cart.push({
-        productId: productId,
-        quantity:1
-      })
-    }
-    let quantity=0;
-    cart.forEach((item) => {
-      quantity += item.quantity;
-    });
-    document.querySelector('.js-cart-quantity').innerHTML=quantity;
-		console.log(cart);
-    
-  })
-})
+    const {productId}=button.dataset;
+    addToCart(productId);
+    updateCartQuantity();
+  });
+});
