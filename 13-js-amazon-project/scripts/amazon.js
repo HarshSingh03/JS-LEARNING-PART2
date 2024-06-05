@@ -90,21 +90,15 @@ products.forEach((product) => {
     Add to Cart
   </button>
   </div>`;
-  
   document.querySelector('.js-products-grid')
   .innerHTML = productsHTML;
 })
 
-
-let running=false;
-document.querySelectorAll('.js-add-to-cart').
-forEach((button) => {
-  button.addEventListener('click',() =>{
-    const {productId}=button.dataset;
-    let selectedQuantity = Number( document.querySelector(`.js-quantity-selector-${productId}`).value);
+function addToCart(productId){
+  let matchingItem;
+  let selectedQuantity = Number( document.querySelector(`.js-quantity-selector-${productId}`).value);
     console.log(selectedQuantity);
-    let matchingItem;
-    let interval;
+    
     cart.forEach((item)=>{
       if (productId === item.productId){
         matchingItem = item;
@@ -125,6 +119,18 @@ forEach((button) => {
     });
     document.querySelector('.js-cart-quantity').innerHTML=quantity;
     console.log(cart);
+}
+
+function updateCartQuantity(){
+  
+}
+
+document.querySelectorAll('.js-add-to-cart').
+forEach((button) => {
+  button.addEventListener('click',() =>{
+    let interval;
+    const {productId}=button.dataset;
+    addToCart(productId);
 
     const messageField=document.querySelector(`.js-added-to-cart-${productId}`);
     messageField.classList.add('hello');
