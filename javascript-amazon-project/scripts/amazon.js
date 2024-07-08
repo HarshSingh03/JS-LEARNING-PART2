@@ -90,7 +90,7 @@ products.forEach((product) => {
   data-product-id="${product.id}">
     Add to Cart
   </button>
-  </div>`;
+  </div>`
   
   document.querySelector('.js-products-grid')
   .innerHTML = productsHTML;
