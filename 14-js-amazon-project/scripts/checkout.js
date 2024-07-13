@@ -1,4 +1,4 @@
-import {cart, removeFromCart} from '../data/cart.js';
+import {cart, removeFromCart,cartQuantity} from '../data/cart.js';
 import {products} from '../data/products.js';
 import {formatCurrency} from '../scripts/utils/money.js';
 
@@ -106,3 +106,12 @@ document.querySelectorAll('.js-delete-link').forEach( (link) => {
     container.remove();
   })
 })
+
+
+document.querySelectorAll('.js-update-link').forEach( (link)=> {
+  link.addEventListener('click',() =>{
+    const productId = link.dataset.productId;
+    
+  })
+})
+document.querySelector('.js-cart-count').innerText=cartQuantity();

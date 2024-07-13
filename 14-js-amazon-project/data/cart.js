@@ -47,3 +47,11 @@ export function removeFromCart(productId){
   cart=newCart;
   saveToStorage();
 }
+
+export function cartQuantity(){
+  let quantity=0;
+  cart.forEach( (item)=>{
+    quantity+=item.quantity;
+  })
+  return quantity;
+}
