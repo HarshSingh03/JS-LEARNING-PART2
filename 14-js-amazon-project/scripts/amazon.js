@@ -103,7 +103,7 @@ function updateCartQuantity(){
     quantity += item.quantity;
   });
   document.querySelector('.js-cart-quantity').innerHTML=quantity;
-  console.log(cart);
+
 }
 
 
